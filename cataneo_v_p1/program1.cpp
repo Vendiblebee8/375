@@ -17,6 +17,7 @@ vector<Card> buy;
 vector<Card> sell;
 vector<Card> tempB;
 vector<Card> Max;
+ofstream myfile;
 Card card;
 int setF;
 int numB = 0;
@@ -123,10 +124,10 @@ vector<Card> computeMaxProfit(vector<Card> I, int cash)
         auto stop = high_resolution_clock::now();
         auto duration = duration_cast<microseconds>(stop - start);
         double dur = duration.count();
-        cout << I.size() << " " << maxProfit << " " << M.size() << " " << dur / (10 ^ 6) << endl;
+        myfile << I.size() << " " << maxProfit << " " << M.size() << " " << dur / (10 ^ 6) << endl;
         for (int i = 0; i < I.size(); i++)
         {
-            cout << I.at(i).getN() << endl;
+            myfile << I.at(i).getN() << endl;
         }
         return I;
     }
@@ -164,10 +165,10 @@ vector<Card> computeMaxProfit(vector<Card> I, int cash)
     auto stop = high_resolution_clock::now();
     auto duration = duration_cast<microseconds>(stop - start);
     double dur = duration.count();
-    cout << I.size() << " " << maxProfit << " " << M.size() << " " << dur / (10 ^ 6) << endl;
+    myfile << I.size() << " " << maxProfit << " " << M.size() << " " << dur / (10 ^ 6) << endl;
     for (int i = 0; i < M.size(); i++)
     {
-        cout << M.at(i).getN() << endl;
+        myfile << M.at(i).getN() << endl;
     }
     return M;
 }
@@ -199,7 +200,10 @@ int main(int argc, char *argv[])
     if (fileOpen(sellerFile, fin))
     {
         readFileS(sellerFile, fin);
+        fin.close();
     }
+    myfile.open("output.txt");
+
     for (int i = 0; i < buy.size(); i++)
     {
         for (int j = 0; j < sell.size(); j++)

@@ -18,13 +18,12 @@ TARFILE = CP$(CP_NUMBER)_$(LASTNAME)_$(USER)_$(GITUSERID).tar
 FLAGS = -Wall -Wextra -g
 # FLAGS = -Wall -O3
 CC = g++
-BIN = bin
 OBJ = obj
 
 # Store executables in a subdirectory
-all: $(BIN)/$(EXE)
+all: $(EXE)
 
-$(BIN)/$(EXE): $(OBJ)/card.o $(OBJ)/program1.o
+$(EXE): $(OBJ)/card.o $(OBJ)/program1.o
 	$(CC) $(FLAGS) $(OBJ)/card.o $(OBJ)/program1.o -o $@
 
 $(OBJ)/program1.o: program1.cpp
@@ -38,4 +37,4 @@ tar:	clean
 	gzip $(TARFILE)
 
 clean:
-	rm -f $(OBJ)/*.o $(BIN)/$(EXE) *.tar.gz
+	rm -f $(OBJ)/*.o $(EXE) *.tar.gz
