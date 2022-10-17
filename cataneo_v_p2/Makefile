@@ -1,5 +1,5 @@
 COURSE = cs375
-SEMESTER = spring2022
+SEMESTER = fall2022
 
 # Update the CP_NUMBER if you adapt this makefile for future assignments
 CP_NUMBER = 2
